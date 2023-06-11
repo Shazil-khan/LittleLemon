@@ -25,6 +25,7 @@ class menuView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response({"status": "success", "data": serializer.data})
+        
 class MenuItemView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
@@ -38,7 +39,7 @@ class SingleMenuItemView(RetrieveUpdateAPIView, DestroyAPIView):
 class BookingViewset(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = bookingSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     
 @api_view()
 @permission_classes([IsAuthenticated])
